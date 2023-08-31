@@ -1,0 +1,14 @@
+<li>
+debugger
+  <strong><%= user.username %></strong> (<%= user.role %>)
+  <% unless user == current_user %>
+    <% if user.pending_friends.include?(current_user) %>
+      <%= link_to 'Accept', accept_request_friend_request_user_path(@user), method: :post %>
+      <%= link_to 'Decline', decline_friend_request_user_path(@user), method: :post %>
+    <% elsif user.requested_friends.include?(current_user) %>
+      <span>Pending...</span>
+    <% else %>
+      <%= link_to 'Send Friend Request', send_request_user_path(@user), method: :post %>
+    <% end %>
+  <% end %>
+</li>

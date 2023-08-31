@@ -1,0 +1,16 @@
+<!-- app/views/posts/show.html.erb -->
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+ <%= image_tag @post.image if @post.image.attached? %> 
+
+<h2>Comments</h2>
+<%= render 'comments/form', comment: @comment %>
+<% @post.comments.each do |comment| %>
+  <p><%= comment.content %></p>
+  <%= image_tag comment.image if comment.image.attached? %>
+<% end %>
+<%# <h2>Comments</h2>
+<%= render 'comments/form', comment: Comment.new %>
+<%# <% @post.comments.each do |comment| %> 
+  <!-- ...comment content... -->
+<%# <% end %> 

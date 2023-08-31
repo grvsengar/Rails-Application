@@ -1,0 +1,18 @@
+<h1>Accept Friend Request</h1>
+
+<% if @friend_request.present? && @friend_request.pending? %>
+  <p><strong>Name:</strong> <%= @friend_request.sender.name %></p>
+  <p><strong>Email:</strong> <%= @friend_request.sender.email %></p>
+
+  <%= form_with(url: accept_request_friend_request_path(@friend_request.sender), method: :post) do |form| %>
+    <%= form.submit 'Accept Friend Request', class: 'btn btn-success' %>
+  <% end %>
+
+  <%= form_with(url: reject_request_friend_request_path(@friend_request.sender), method: :post) do |form| %>
+    <%= form.submit 'Reject Friend Request', class: 'btn btn-danger' %>
+  <% end %>
+<% else %>
+  <p>No pending friend request from this user.</p>
+<% end %>
+
+<%= link_to 'Back to User Profile', user_path(@friend_request.sender) %>

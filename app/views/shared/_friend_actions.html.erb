@@ -1,0 +1,7 @@
+<% if can? :send_friend_request, user %>
+  <%= link_to 'Send Friend Request', send_request_friend_request_user_path(@user), method: :post %>
+<% elsif can? :accept_friend_request, user %>
+  <%= link_to 'Accept', accept_request_friend_request_user_path(@user), method: :post %>
+<% elsif can? :decline_friend_request, user %>
+  <%= link_to 'Decline', reject_request_friend_request_user_path(@user), method: :post %>
+<% end %>

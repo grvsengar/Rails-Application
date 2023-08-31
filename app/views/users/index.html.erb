@@ -1,0 +1,16 @@
+
+<%# <ul>
+  <% @users.each do |user| %>
+    <%# <%= render partial: 'user', locals: { user: user } %> 
+  <%# <% end %> 
+<%# </ul>  %>
+<h1>Users</h1>
+<ul>
+
+  <% @users.each do |user| %>
+    <li>
+      <strong><%= user.full_name %></strong> (<%= user.role %>)
+      <%= render partial: 'shared/friend_actions', locals: { user: user } %>
+    </li>
+  <% end %>
+</ul>

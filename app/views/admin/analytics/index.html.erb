@@ -1,0 +1,8 @@
+<h1>Analytics</h1>
+
+<h2>Number of Users: <%= @user_count %></h2>
+<h2>Number of Posts: <%= @post_count %></h2>
+
+<h2>Top User: <%= @top_user.username %> (Posts: <%= @top_user.posts.count %>)</h2>
+
+<%= line_chart User.group_by_day(:created_at).count %>

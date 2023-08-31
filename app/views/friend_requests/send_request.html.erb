@@ -1,0 +1,10 @@
+<h1>Send Friend Request</h1>
+
+<p><strong>Name:</strong> <%= @user.name %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
+
+<%= form_with(url: send_request_friend_request_path(@user), method: :post) do |form| %>
+  <%= form.submit 'Send Friend Request', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Back to User Profile', user_path(@user) %>
